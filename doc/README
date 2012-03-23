@@ -1,0 +1,5 @@
+To be able to convert the requirements.tex LaTeX document to a pdf document you
+will need the titlesec tool.
+
+The file needed is titlesec.sty and can be downloaded from
+http://www.ctan.org/tex-archive/macros/latex/contrib/titlesec/

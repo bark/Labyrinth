@@ -1,0 +1,170 @@
+\documentclass[a4paper,titlepage]{article}
+\usepackage[final]{pdfpages}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{titlesec}
+
+
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black
+}
+
+%\titlespacing*{<cmd>}{<left sep>}{<before sep>}{<after sep>}[<right sep>]
+\titlespacing*{\section}{0pt}{*4}{*3}
+\titlespacing*{\subsection}{0pt}{*8}{*3}
+
+
+\title{Software Requirements Specifications}
+\author{Andreas Beggren\\
+        Gustav Freij\\
+        Christoffer Karlsson}
+\date{23 mars 2012}
+
+\begin{document}
+
+\maketitle
+
+% Table of contents
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+
+% 
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+% Template
+%\begin{tabularx}{\textwidth}{XX}
+%	\textbf{ID}					&	\thesubsection\\
+%	\textbf{Use case/Scenario}	&	\\
+%	\textbf{Trigger}			&	\\
+%	\textbf{Preconditions}		&	\\\\
+%	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+%	\textbf{Basic path} \newline
+%	
+%	} \\\\
+%	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+%	\textbf{Exception path} \newline
+%	
+%	} \\\\
+%	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+%	\textbf{Post condition} \newline
+%	
+%	} \\\\
+%	\textbf{Author}				&	
+%\end{tabularx}
+
+\section{Initiation}
+\subsection{Add a ball} \label{init:addball}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	Add a ball\\
+	\textbf{Trigger}			&	The player starts a new game\\
+	\textbf{Precondition}		&	-\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The ball is rendered on the screen.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The ball is visible to the player.
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{Add virtual arrows} \label{init:addarrows}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	Add virtual arrows\\
+	\textbf{Trigger}			&	The player starts a new game\\
+	\textbf{Precondition}		&	Debugging mode for development stage is activated\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	Four arrows, one for each direction the ball is meant to move in, are rendered in the bottom-right corner.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The arrows are visible to the player.
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\section{Steering}
+\subsection{Steer the ball using keys}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	Steer the ball using keys\\
+	\textbf{Trigger}			&	he player wants to move the ball\\
+	\textbf{Precondition}		&	The ball is added (Req \ref{init:addball})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The ball moves upwards when volume up is pressed, downwards when volume down is pressed.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The ball is moved in the chosen direction.
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{Steer the ball using virtual keys}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	Steer the ball using virtual keys\\
+	\textbf{Trigger}			&	The player wants to move the ball\\
+	\textbf{Precondition}		&	The ball is added (Req \ref{init:addball}) \newline
+									The virtual arrows are added (Req \ref{init:addarrows})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The player press the appropriate key.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The ball is moved in the direction implied by the arrow used.
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{Steer the ball using the accelerometer}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	Steer the ball using the accelerometer\\
+	\textbf{Trigger}			&	The player wants to move the ball\\
+	\textbf{Precondition}		&	The ball is added (Req \ref{init:addball})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The player tilt the phone in a chosen direction.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The ball is moved in the chosed direction.
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\end{document}

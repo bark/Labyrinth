@@ -20,10 +20,10 @@
 
 
 \title{Software Requirements Specifications}
-\author{Andreas Beggren\\
+\author{Andreas Berggren\\
         Gustav Freij\\
         Christoffer Karlsson}
-\date{23 mars 2012}
+\date{27 mars 2012}
 
 \begin{document}
 
@@ -59,6 +59,7 @@
 %	\textbf{Author}				&	
 %\end{tabularx}
 
+%%%%%%%%%%%%%%% Initiation %%%%%%%%%%%%%%%
 \section{Initiation}
 \subsection{Add a ball} \label{init:addball}
 \begin{tabularx}{\textwidth}{XX}
@@ -102,12 +103,99 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
+\subsection{Add a playing board} \label{init:addboard}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	Add a playing board\\
+	\textbf{Trigger}			&	The player starts a new game\\
+	\textbf{Preconditions}		&	-\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	A playing board is rendered and shown.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	The board might render in front of other rendered objects.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The playing board is visible to the player.
+	} \\\\
+	\textbf{Author}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{Add one wall} \label{init:addonewall}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	Add one wall\\
+	\textbf{Trigger}			&	The player starts a new game\\
+	\textbf{Preconditions}		&	Debugging mode for development stage is activated \newline
+									The board is rendered (Req \ref{init:addboard})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	A wall is rendered and shown.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	The wall is rendered behind the playing board.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	A wall is visible to the player.
+	} \\\\
+	\textbf{Author}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{Add walls shaped like a maze} \label{init:addmanywalls}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	Add walls shaped like a maze\\
+	\textbf{Trigger}			&	The player starts a new game\\
+	\textbf{Preconditions}		&	The board is rendered (Req \ref{init:addboard})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	Walls are rendered around the playing field and inside the playing field shaped as a maze.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	The walls are rendered behind the playing board.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	Walls are visible to the player and a track shaped as a maze has been created.
+	} \\\\
+	\textbf{Author}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{Add a hole} \label{init:addhole}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	Add a hole\\
+	\textbf{Trigger}			&	The player starts a new game\\
+	\textbf{Preconditions}		&	The board is rendered (Req \ref{init:addboard})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	A hole is added to the playing field.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	The hole is created at the same place as a wall or behind the playing field.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	A hole is visible to the player.
+	} \\\\
+	\textbf{Author}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+%%%%%%%%%%%%%%% Steering %%%%%%%%%%%%%%%
+\newpage
 \section{Steering}
 \subsection{Steer the ball using keys}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	Steer the ball using keys\\
-	\textbf{Trigger}			&	he player wants to move the ball\\
+	\textbf{Trigger}			&	The player wants to move the ball\\
 	\textbf{Precondition}		&	The ball is added (Req \ref{init:addball})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
@@ -146,7 +234,7 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{Steer the ball using the accelerometer}
+\subsection{Steer the ball using the accelerometer} \label{init:steerwithaccelerometer}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	Steer the ball using the accelerometer\\
@@ -163,6 +251,75 @@
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Post condition} \newline
 	The ball is moved in the chosed direction.
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+%%%%%%%%%%%%%%% Interaction %%%%%%%%%%%%%%%
+\newpage
+\section{Interaction}
+\subsection{Have ball interact with tilt of device}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	Have ball interact with tilt of device\\
+	\textbf{Trigger}			&	The player tilts the device\\
+	\textbf{Precondition}		&	The ball is added (Req \ref{init:addball}) \newline
+									The ball can be steered with the accelerometer (Req \ref{init:steerwithaccelerometer})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The device is tilted in either direction.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The ball moves in the direction and speed decided by the tilt of the device.
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{Have ball interact with wall}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	Have ball interact with wall\\
+	\textbf{Trigger}			&	The ball is moved towards the wall\\
+	\textbf{Precondition}		&	The ball is added (Req \ref{init:addball}) \newline
+									A wall is added (Req \ref{init:addonewall} or \ref{init:addmanywalls})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The ball hits the wall.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The ball is stopped by the wall.
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{Have ball interact with a hole}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	Have ball interact with a hole\\
+	\textbf{Trigger}			&	The ball is moved on top of the hole\\
+	\textbf{Precondition}		&	The ball is added (Req \ref{init:addball}) \newline
+									A hole is added (Req \ref{init:addhole})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The ball ends up on top of the hole.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The ball is eaten up by an invisible monster!
 	} \\\\
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}

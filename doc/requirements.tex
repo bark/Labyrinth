@@ -59,7 +59,52 @@
 %	\textbf{Author}				&	
 %\end{tabularx}
 
+%%%%%%%%%%%%%%% System %%%%%%%%%%%%%%%
+\section{System}
+\subsection{The user starts the application} \label{init:user_app_start}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The user starts the application\\
+	\textbf{Trigger}			&	The user launches the application\\
+	\textbf{Precondition}		&	The user is able to start the application (Req \ref{init:nf_app_start})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The application starts.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The application is running.
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{The user exits the application}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The user exits the application\\
+	\textbf{Trigger}			&	The user exits the application\\
+	\textbf{Precondition}		&	The user is able to exit the application (Req \ref{init:nf_app_exit})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The application stops.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The application is not running.
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
 %%%%%%%%%%%%%%% Initiation %%%%%%%%%%%%%%%
+\newpage
 \section{Initiation}
 \subsection{Add a ball} \label{init:addball}
 \begin{tabularx}{\textwidth}{XX}
@@ -167,10 +212,31 @@
 	\textbf{Author}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{Add a hole} \label{init:addhole}
+\subsection{Add sink holes} \label{init:addhole}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
-	\textbf{Use case/Scenario}	&	Add a hole\\
+	\textbf{Use case/Scenario}	&	Add sink holes\\
+	\textbf{Trigger}			&	The player starts a new game\\
+	\textbf{Preconditions}		&	The board is rendered (Req \ref{init:addboard})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	Sink holes are added to the playing field.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	The holes are created at the same place as a wall, behind the playing field or on another hole.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The sink holes is visible to the player.
+	} \\\\
+	\textbf{Author}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{Add a final hole} \label{init:addhole}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	Add a final hole\\
 	\textbf{Trigger}			&	The player starts a new game\\
 	\textbf{Preconditions}		&	The board is rendered (Req \ref{init:addboard})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
@@ -179,11 +245,11 @@
 	} \\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Exception path} \newline
-	The hole is created at the same place as a wall or behind the playing field.
+	The hole is created at the same place as a wall, behind the playing field or on another hole.
 	} \\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Post condition} \newline
-	A hole is visible to the player.
+	The final hole is visible to the player.
 	} \\\\
 	\textbf{Author}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
@@ -324,4 +390,512 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
+\subsection{Have ball interact with a hole}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	Have ball interact with a hole\\
+	\textbf{Trigger}			&	The ball is moved on top of the hole\\
+	\textbf{Precondition}		&	The ball is added (Req \ref{init:addball}) \newline
+									A hole is added (Req \ref{init:addhole})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The ball ends up on top of the hole.
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The ball is eaten up by an invisible monster!
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+
+%%%%%%%%%%%%%%% In-game %%%%%%%%%%%%%%%%
+\subsection{The device screen shall never go into sleep mode while playing}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The device screen shall never go into sleep mode while playing\\
+	\textbf{Trigger}			&	A new game is started\\
+	\textbf{Precondition}		&	-\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The game is run without interrupts from sleep mode
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{The application will only make use of landscape view while in playing mode}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The application will only make use of landscape view while in playing mode\\
+	\textbf{Trigger}			&	A game is started\\
+	\textbf{Precondition}		&	-\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The screen initiates landscape mode
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The current game is run in landscape mode
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+
+%%%%%%%%%%%%%%% Menus %%%%%%%%%%%%%%%%
+\newpage
+\section{Menus}
+%%%%%%%%%%%%% Main Menu %%%%%%%%%%%%%%%%%
+\subsection{The main menu will be shown on application startup} \label{init:main_menu_shown}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The main menu will be shown on application startup \\
+	\textbf{Trigger}			&	The application is started\\
+	\textbf{Precondition}		&	The user starts the application (Req \ref{init:user_app_start})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The main menu is created
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The main menu is visible
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{The main menu shall be able to initiate a new game}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The main menu shall be able to initate a new game \\
+	\textbf{Trigger}			&	The "New Game" button in the main menu is pressed\\
+	\textbf{Precondition}		&	The main menu will be shown on application startup (Req \ref{init:main_menu_shown})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	A new game is initiated
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	A new game is not initiated
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	A new game is active
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+%%%%%%%%%%%%% In-Game Menu %%%%%%%%%%%%%%%%
+
+\subsection{The in-game menu is accessible within an active game} \label{init:ingame_accessible}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The in-game menu is accessible within an active game \\
+	\textbf{Trigger}			&	The device menu button is pressed while in an active game\\
+	\textbf{Precondition}		&	A game is active\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The in-game menu is shown
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The in-game menu is visible
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{Sound can be turned on via the in-game menu}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	Sound can be turned on via the in-game menu\\
+	\textbf{Trigger}			&	The user ticks the sound tickbox\\
+	\textbf{Precondition}		&	The in-game menu is accessible within an active game (Req \ref{init:ingame_accessible})\newline
+                                                   The sound is turned off\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The sound is turned on
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The sound is on
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{Sound can be turned off via the in-game menu}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	Sound can be turned off via the in-game menu\\
+	\textbf{Trigger}			&	The user unticks the sound tickbox\\
+	\textbf{Precondition}		&	The in-game menu is accessible within an active game (Req \ref{init:ingame_accessible})\newline
+								The sound is turned on\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The sound is turned off
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The sound is off
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{The current game can be terminated via the in-game menu} \label{end_game}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The current game can be exited via the in-game menu\\
+	\textbf{Trigger}			&	The user presses the "Exit Current Game" button\\
+	\textbf{Precondition}		&	The in-game menu is accessible within an active game (Req \ref{init:ingame_accessible})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The current game is turned off
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	There is no current game
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{The current game is resumed via the in-game menu}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The current game is resumed via the in-game menu\\
+	\textbf{Trigger}			&	The user presses the "Resume Game" button\\
+	\textbf{Precondition}		&	The in-game menu is accessible within an active game (Req \ref{init:ingame_accessible})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	A specified delay is counted down visibly on the screen
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The current game is resumed
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{The current game can be resumed via the in-game menu}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The current game can be resumed via the in-game menu\\
+	\textbf{Trigger}			&	The user presses the "Resume Game" button\\
+	\textbf{Precondition}		&	The in-game menu is accessible (Req \ref{init:ingame_accessible})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	A specified delay is counted down visibly on the screen
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The current game is resumed
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+
+%%%%%%%%%%%%%% Finished Game Menu %%%%%%%%%%%%%%%%
+\subsection{A "Finished Game Menu" will be shown} \label{init:finishedmenu_shown}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	A "Finished Game Menu" will be shown on completion of a map\\
+	\textbf{Trigger}			&	The current game is finished\\
+	\textbf{Precondition}		&	There is an active game\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	A "Finished Game Menu" is shown
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	A "Finished Game Menu" is visible
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{The "Finished Game Menu" shall show completion-of-map time}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The "Finished Game Menu" shall show completion-of-map time\\
+	\textbf{Trigger}			&	The current game is finished\\
+	\textbf{Precondition}		&	A "Finished Game Menu" will be shown on completion of a map (Req \ref{init:finishedmenu_shown})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	A "Finished Game Menu" is shown with the completion-of-map time
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The completion-of-map time is visible
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{The main menu is accessible from the "Finished Game Menu"}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The main menu is accessible from the "Finished Game Menu"\\
+	\textbf{Trigger}			&	The "Main Menu" button is pressed\\
+	\textbf{Precondition}		&	A "Finished Game Menu" will be shown on completion of a map (Req \ref{init:finishedmenu_shown})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The main menu is accessed
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The main menu is visible
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{The previous game can be retried from the "Finished Game Menu"}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The previous game can be retried from the "Finished Game Menu"\\
+	\textbf{Trigger}			&	The "Retry" button in the "Finished Game Menu" is pressed\\
+	\textbf{Precondition}		&	A "Finished Game Menu" will be shown on completion of a map (Req \ref{init:finishedmenu_shown})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The previous game is re-initiated
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The previous game is the current game
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{The next map is accessible from the "Finished Game Menu"}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The next map is accessible from the "Finished Game Menu"\\
+	\textbf{Trigger}			&	The "Next Map" button in the "Finished Game Menu" is pressed\\
+	\textbf{Precondition}		&	A "Finished Game Menu" will be shown on completion of a map (Req \ref{init:finishedmenu_shown})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	A new game with the next map is initated
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	There is no "next map"
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The current game with the next map is active
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% Non-functional %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%% Device %%%%%%%%%%%%%%%%%
+\section{Device}
+\subsection{The device shall support Android 2.1}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The device shall support Android 2.1\\
+	\textbf{Trigger}			&	-\\
+	\textbf{Precondition}		&	The device is running Android 2.1 or later\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	-
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{The device shall have an accelerometer} \label{accelerometer}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The device shall have an accelerometer\\
+	\textbf{Trigger}			&	-\\
+	\textbf{Precondition}		&	-\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	-
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{The device shall have a touchscreen}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The device shall have a touchscreen\\
+	\textbf{Trigger}			&	-\\
+	\textbf{Precondition}		&	-\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	-
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+
+%%%%%%%%%%%%%%% Application %%%%%%%%%%%%%%%
+\section{Application}
+\subsection{The user shall be able to start the application} \label{init:nf_app_start}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The user shall be able to start the application\\
+	\textbf{Trigger}			&	-\\
+	\textbf{Precondition}		&	-\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+
+	\textbf{Post condition} \newline
+	The user is able to start the application.
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{The user shall be able to exit the application} \label{init:nf_app_exit}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The user shall be able to exit the application\\
+	\textbf{Trigger}			&	-\\
+	\textbf{Precondition}		&	-\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The user is able to exit the application.
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{The application shall have access to the devices accelerometer}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The application shall have access to the devices accelerometer\\
+	\textbf{Trigger}			&	-\\
+	\textbf{Precondition}		&	The device shall have an accelerometer (Req \ref{accelerometer})\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	The application requires access to the accelerometer
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	Access to the accelerometer is not granted
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The application can make use of the accelerometer
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
+
+\subsection{The application shall only make use of the English language}
+\begin{tabularx}{\textwidth}{XX}
+	\textbf{ID}					&	\thesubsection\\
+	\textbf{Use case/Scenario}	&	The application shall only make use of the English language\\
+	\textbf{Trigger}			&	-\\
+	\textbf{Precondition}		&	-\\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Basic path} \newline
+	-
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Exception path} \newline
+	The wrong language is used
+	} \\\\
+	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
+	\textbf{Post condition} \newline
+	The English language is used consistently throughout the interface of the application
+	} \\\\
+	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
+\end{tabularx}
 \end{document}

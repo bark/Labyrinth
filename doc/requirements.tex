@@ -23,7 +23,7 @@
 \author{Andreas Berggren\\
         Gustav Freij\\
         Christoffer Karlsson}
-\date{27 mars 2012}
+\date{16 april 2012}
 
 \begin{document}
 
@@ -59,14 +59,28 @@
 %	\textbf{Author}				&	
 %\end{tabularx}
 
+%%% When editing:
+%%% \section = 1. Hello
+%%% \subsection = 1.1. Hello		Use \thesubsection for ID
+%%% \subsubsection = 1.1.1 Hello	Use \thesubsubsection for ID
+%%% Labels: x-y-abc_def	where x = 'f' for function, 'nf' for non-functional
+%%%						y = the section and abc_def = the requirement
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% Non-functional %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Functional requirements}
+\addcontentsline{toc}{section}{Functional requirements}
+
 %%%%%%%%%%%%%%% System %%%%%%%%%%%%%%%
 \section{System}
-\subsection{The user starts the application} \label{init:user_app_start}
+\subsection{The user starts the application} \label{f-system-start_app}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	The user starts the application\\
 	\textbf{Trigger}			&	The user launches the application\\
-	\textbf{Precondition}		&	The user is able to start the application (Req \ref{init:nf_app_start})\\\\
+	\textbf{Precondition}		&	The user is able to start the application (Req \ref{nf-application-start})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	The application starts.
@@ -87,7 +101,7 @@
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	The user exits the application\\
 	\textbf{Trigger}			&	The user exits the application\\
-	\textbf{Precondition}		&	The user is able to exit the application (Req \ref{init:nf_app_exit})\\\\
+	\textbf{Precondition}		&	The user is able to exit the application (Req \ref{nf-application-exit})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	The application stops.
@@ -106,7 +120,7 @@
 %%%%%%%%%%%%%%% Initiation %%%%%%%%%%%%%%%
 \newpage
 \section{Initiation}
-\subsection{Add a ball} \label{init:addball}
+\subsection{Add a ball} \label{f-initiation-add_a_ball}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	Add a ball\\
@@ -127,7 +141,7 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{Add virtual arrows} \label{init:addarrows}
+\subsection{Add virtual arrows} \label{f-initiation-add_virtual_arrows}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	Add virtual arrows\\
@@ -147,8 +161,9 @@
 	} \\\\
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
+\newpage
 
-\subsection{Add a playing board} \label{init:addboard}
+\subsection{Add a playing board} \label{f-initiation-add_playing_board}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	Add a playing board\\
@@ -169,13 +184,13 @@
 	\textbf{Author}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{Add one wall} \label{init:addonewall}
+\subsection{Add one wall} \label{f-initiation-add_one_wall}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	Add one wall\\
 	\textbf{Trigger}			&	The player starts a new game\\
 	\textbf{Preconditions}		&	Debugging mode for development stage is activated \newline
-									The board is rendered (Req \ref{init:addboard})\\\\
+									The board is rendered (Req \ref{f-initiation-add_playing_board})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	A wall is rendered and shown.
@@ -191,12 +206,12 @@
 	\textbf{Author}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{Add walls shaped like a maze} \label{init:addmanywalls}
+\subsection{Add walls shaped like a maze} \label{f-initiation-add_many_walls}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	Add walls shaped like a maze\\
 	\textbf{Trigger}			&	The player starts a new game\\
-	\textbf{Preconditions}		&	The board is rendered (Req \ref{init:addboard})\\\\
+	\textbf{Preconditions}		&	The board is rendered (Req \ref{f-initiation-add_playing_board})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	Walls are rendered around the playing field and inside the playing field shaped as a maze.
@@ -212,12 +227,12 @@
 	\textbf{Author}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{Add sink holes} \label{init:addhole}
+\subsection{Add sink holes} \label{f-initiation-add_sink_holes}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	Add sink holes\\
 	\textbf{Trigger}			&	The player starts a new game\\
-	\textbf{Preconditions}		&	The board is rendered (Req \ref{init:addboard})\\\\
+	\textbf{Preconditions}		&	The board is rendered (Req \ref{f-initiation-add_playing_board})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	Sink holes are added to the playing field.
@@ -233,12 +248,12 @@
 	\textbf{Author}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{Add a final hole} \label{init:addhole}
+\subsection{Add a final hole} \label{f-initiation-add_final_hole}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	Add a final hole\\
 	\textbf{Trigger}			&	The player starts a new game\\
-	\textbf{Preconditions}		&	The board is rendered (Req \ref{init:addboard})\\\\
+	\textbf{Preconditions}		&	The board is rendered (Req \ref{f-initiation-add_playing_board})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	A hole is added to the playing field.
@@ -262,7 +277,7 @@
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	Steer the ball using keys\\
 	\textbf{Trigger}			&	The player wants to move the ball\\
-	\textbf{Precondition}		&	The ball is added (Req \ref{init:addball})\\\\
+	\textbf{Precondition}		&	The ball is added (Req \ref{f-initiation-add_a_ball})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	The ball moves upwards when volume up is pressed, downwards when volume down is pressed.
@@ -283,8 +298,8 @@
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	Steer the ball using virtual keys\\
 	\textbf{Trigger}			&	The player wants to move the ball\\
-	\textbf{Precondition}		&	The ball is added (Req \ref{init:addball}) \newline
-									The virtual arrows are added (Req \ref{init:addarrows})\\\\
+	\textbf{Precondition}		&	The ball is added (Req \ref{f-initiation-add_a_ball}) \newline
+									The virtual arrows are added (Req \ref{f-initiation-add_virtual_arrows})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	The player press the appropriate key.
@@ -300,12 +315,12 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{Steer the ball using the accelerometer} \label{init:steerwithaccelerometer}
+\subsection{Steer the ball using the accelerometer} \label{f-steering-steer_with_accelerometer}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	Steer the ball using the accelerometer\\
 	\textbf{Trigger}			&	The player wants to move the ball\\
-	\textbf{Precondition}		&	The ball is added (Req \ref{init:addball})\\\\
+	\textbf{Precondition}		&	The ball is added (Req \ref{f-initiation-add_a_ball})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	The player tilt the phone in a chosen direction.
@@ -329,8 +344,8 @@
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	Have ball interact with tilt of device\\
 	\textbf{Trigger}			&	The player tilts the device\\
-	\textbf{Precondition}		&	The ball is added (Req \ref{init:addball}) \newline
-									The ball can be steered with the accelerometer (Req \ref{init:steerwithaccelerometer})\\\\
+	\textbf{Precondition}		&	The ball is added (Req \ref{f-initiation-add_a_ball}) \newline
+									The ball can be steered with the accelerometer (Req \ref{f-steering-steer_with_accelerometer})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	The device is tilted in either direction.
@@ -351,8 +366,8 @@
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	Have ball interact with wall\\
 	\textbf{Trigger}			&	The ball is moved towards the wall\\
-	\textbf{Precondition}		&	The ball is added (Req \ref{init:addball}) \newline
-									A wall is added (Req \ref{init:addonewall} or \ref{init:addmanywalls})\\\\
+	\textbf{Precondition}		&	The ball is added (Req \ref{f-initiation-add_a_ball}) \newline
+									A wall is added (Req \ref{f-initiation-add_one_wall} or \ref{f-initiation-add_many_walls})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	The ball hits the wall.
@@ -368,13 +383,13 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{Have ball interact with a hole}
+\subsection{Have ball interact with a sink hole}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	Have ball interact with a hole\\
 	\textbf{Trigger}			&	The ball is moved on top of the hole\\
-	\textbf{Precondition}		&	The ball is added (Req \ref{init:addball}) \newline
-									A hole is added (Req \ref{init:addhole})\\\\
+	\textbf{Precondition}		&	The ball is added (Req \ref{f-initiation-add_a_ball}) \newline
+									A hole is added (Req \ref{f-initiation-add_sink_holes})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	The ball ends up on top of the hole.
@@ -390,13 +405,13 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{Have ball interact with a hole}
+\subsection{Have ball interact with the final hole}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
-	\textbf{Use case/Scenario}	&	Have ball interact with a hole\\
+	\textbf{Use case/Scenario}	&	Have ball interact with the final hole\\
 	\textbf{Trigger}			&	The ball is moved on top of the hole\\
-	\textbf{Precondition}		&	The ball is added (Req \ref{init:addball}) \newline
-									A hole is added (Req \ref{init:addhole})\\\\
+	\textbf{Precondition}		&	The ball is added (Req \ref{f-initiation-add_a_ball}) \newline
+									The finish hole is added (Req \ref{f-initiation-add_final_hole})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	The ball ends up on top of the hole.
@@ -407,13 +422,14 @@
 	} \\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Post condition} \newline
-	The ball is eaten up by an invisible monster!
+	The current game ends.
 	} \\\\
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
 
 %%%%%%%%%%%%%%% In-game %%%%%%%%%%%%%%%%
+\newpage
 \subsection{The device screen shall never go into sleep mode while playing}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
@@ -460,16 +476,18 @@
 %%%%%%%%%%%%%%% Menus %%%%%%%%%%%%%%%%
 \newpage
 \section{Menus}
+
 %%%%%%%%%%%%% Main Menu %%%%%%%%%%%%%%%%%
-\subsection{The main menu will be shown on application startup} \label{init:main_menu_shown}
+\subsection{Main menu}
+\subsubsection{The main menu is shown on application startup} \label{f-menus-main_menu-show}
 \begin{tabularx}{\textwidth}{XX}
-	\textbf{ID}					&	\thesubsection\\
+	\textbf{ID}					&	\thesubsubsection\\
 	\textbf{Use case/Scenario}	&	The main menu will be shown on application startup \\
 	\textbf{Trigger}			&	The application is started\\
-	\textbf{Precondition}		&	The user starts the application (Req \ref{init:user_app_start})\\\\
+	\textbf{Precondition}		&	The user starts the application (Req \ref{f-system-start_app})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
-	The main menu is created
+	The main menu is initiated
 	} \\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Exception path} \newline
@@ -482,12 +500,12 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{The main menu shall be able to initiate a new game}
+\subsubsection{The main menu shall be able to initiate a new game}
 \begin{tabularx}{\textwidth}{XX}
-	\textbf{ID}					&	\thesubsection\\
+	\textbf{ID}					&	\thesubsubsection\\
 	\textbf{Use case/Scenario}	&	The main menu shall be able to initate a new game \\
 	\textbf{Trigger}			&	The "New Game" button in the main menu is pressed\\
-	\textbf{Precondition}		&	The main menu will be shown on application startup (Req \ref{init:main_menu_shown})\\\\
+	\textbf{Precondition}		&	The main menu is shown on application startup (Req \ref{f-menus-main_menu-show})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	A new game is initiated
@@ -503,11 +521,11 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-%%%%%%%%%%%%% In-Game Menu %%%%%%%%%%%%%%%%
-
-\subsection{The in-game menu is accessible within an active game} \label{init:ingame_accessible}
+%%%%%%%%%%%%% In-game menu %%%%%%%%%%%%%%%%
+\subsection{In-game menu}
+\subsubsection{The in-game menu is accessible within an active game} \label{f-menus-in_game-accessible}
 \begin{tabularx}{\textwidth}{XX}
-	\textbf{ID}					&	\thesubsection\\
+	\textbf{ID}					&	\thesubsubsection\\
 	\textbf{Use case/Scenario}	&	The in-game menu is accessible within an active game \\
 	\textbf{Trigger}			&	The device menu button is pressed while in an active game\\
 	\textbf{Precondition}		&	A game is active\\\\
@@ -526,12 +544,12 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{Sound can be turned on via the in-game menu}
+\subsubsection{Sound can be turned on via the in-game menu}
 \begin{tabularx}{\textwidth}{XX}
-	\textbf{ID}					&	\thesubsection\\
+	\textbf{ID}					&	\thesubsubsection\\
 	\textbf{Use case/Scenario}	&	Sound can be turned on via the in-game menu\\
 	\textbf{Trigger}			&	The user ticks the sound tickbox\\
-	\textbf{Precondition}		&	The in-game menu is accessible within an active game (Req \ref{init:ingame_accessible})\newline
+	\textbf{Precondition}		&	The in-game menu is accessible within an active game (Req \ref{f-menus-in_game-accessible})\newline
                                                    The sound is turned off\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
@@ -548,12 +566,12 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{Sound can be turned off via the in-game menu}
+\subsubsection{Sound can be turned off via the in-game menu}
 \begin{tabularx}{\textwidth}{XX}
-	\textbf{ID}					&	\thesubsection\\
+	\textbf{ID}					&	\thesubsubsection\\
 	\textbf{Use case/Scenario}	&	Sound can be turned off via the in-game menu\\
 	\textbf{Trigger}			&	The user unticks the sound tickbox\\
-	\textbf{Precondition}		&	The in-game menu is accessible within an active game (Req \ref{init:ingame_accessible})\newline
+	\textbf{Precondition}		&	The in-game menu is accessible within an active game (Req \ref{f-menus-in_game-accessible})\newline
 								The sound is turned on\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
@@ -570,12 +588,12 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{The current game can be terminated via the in-game menu} \label{end_game}
+\subsubsection{The current game can be terminated via the in-game menu}
 \begin{tabularx}{\textwidth}{XX}
-	\textbf{ID}					&	\thesubsection\\
+	\textbf{ID}					&	\thesubsubsection\\
 	\textbf{Use case/Scenario}	&	The current game can be exited via the in-game menu\\
 	\textbf{Trigger}			&	The user presses the "Exit Current Game" button\\
-	\textbf{Precondition}		&	The in-game menu is accessible within an active game (Req \ref{init:ingame_accessible})\\\\
+	\textbf{Precondition}		&	The in-game menu is accessible within an active game (Req \ref{f-menus-in_game-accessible})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	The current game is turned off
@@ -591,12 +609,12 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{The current game is resumed via the in-game menu}
+\subsubsection{The current game is resumed via the in-game menu}
 \begin{tabularx}{\textwidth}{XX}
-	\textbf{ID}					&	\thesubsection\\
+	\textbf{ID}					&	\thesubsubsection\\
 	\textbf{Use case/Scenario}	&	The current game is resumed via the in-game menu\\
 	\textbf{Trigger}			&	The user presses the "Resume Game" button\\
-	\textbf{Precondition}		&	The in-game menu is accessible within an active game (Req \ref{init:ingame_accessible})\\\\
+	\textbf{Precondition}		&	The in-game menu is accessible within an active game (Req \ref{f-menus-in_game-accessible})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	A specified delay is counted down visibly on the screen
@@ -612,12 +630,12 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{The current game can be resumed via the in-game menu}
+\subsubsection{The current game can be resumed via the in-game menu}
 \begin{tabularx}{\textwidth}{XX}
-	\textbf{ID}					&	\thesubsection\\
+	\textbf{ID}					&	\thesubsubsection\\
 	\textbf{Use case/Scenario}	&	The current game can be resumed via the in-game menu\\
 	\textbf{Trigger}			&	The user presses the "Resume Game" button\\
-	\textbf{Precondition}		&	The in-game menu is accessible (Req \ref{init:ingame_accessible})\\\\
+	\textbf{Precondition}		&	The in-game menu is accessible (Req \ref{f-menus-in_game-accessible})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	A specified delay is counted down visibly on the screen
@@ -635,9 +653,10 @@
 
 
 %%%%%%%%%%%%%% Finished Game Menu %%%%%%%%%%%%%%%%
-\subsection{A "Finished Game Menu" will be shown} \label{init:finishedmenu_shown}
+\subsection{Finnished game menu}
+\subsubsection{A "Finished Game Menu" will be shown} \label{f-menus-finished_game-show}
 \begin{tabularx}{\textwidth}{XX}
-	\textbf{ID}					&	\thesubsection\\
+	\textbf{ID}					&	\thesubsubsection\\
 	\textbf{Use case/Scenario}	&	A "Finished Game Menu" will be shown on completion of a map\\
 	\textbf{Trigger}			&	The current game is finished\\
 	\textbf{Precondition}		&	There is an active game\\\\
@@ -656,12 +675,12 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{The "Finished Game Menu" shall show completion-of-map time}
+\subsubsection{The "Finished Game Menu" shall show completion-of-map time}
 \begin{tabularx}{\textwidth}{XX}
-	\textbf{ID}					&	\thesubsection\\
+	\textbf{ID}					&	\thesubsubsection\\
 	\textbf{Use case/Scenario}	&	The "Finished Game Menu" shall show completion-of-map time\\
 	\textbf{Trigger}			&	The current game is finished\\
-	\textbf{Precondition}		&	A "Finished Game Menu" will be shown on completion of a map (Req \ref{init:finishedmenu_shown})\\\\
+	\textbf{Precondition}		&	A "Finished Game Menu" is shown on completion of a map (Req \ref{f-menus-finished_game-show})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	A "Finished Game Menu" is shown with the completion-of-map time
@@ -677,12 +696,12 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{The main menu is accessible from the "Finished Game Menu"}
+\subsubsection{The main menu is accessible from the "Finished Game Menu"}
 \begin{tabularx}{\textwidth}{XX}
-	\textbf{ID}					&	\thesubsection\\
+	\textbf{ID}					&	\thesubsubsection\\
 	\textbf{Use case/Scenario}	&	The main menu is accessible from the "Finished Game Menu"\\
 	\textbf{Trigger}			&	The "Main Menu" button is pressed\\
-	\textbf{Precondition}		&	A "Finished Game Menu" will be shown on completion of a map (Req \ref{init:finishedmenu_shown})\\\\
+	\textbf{Precondition}		&	A "Finished Game Menu" is shown on completion of a map (Req \ref{f-menus-finished_game-show})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	The main menu is accessed
@@ -698,12 +717,12 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{The previous game can be retried from the "Finished Game Menu"}
+\subsubsection{The previous game can be retried from the "Finished Game Menu"}
 \begin{tabularx}{\textwidth}{XX}
-	\textbf{ID}					&	\thesubsection\\
+	\textbf{ID}					&	\thesubsubsection\\
 	\textbf{Use case/Scenario}	&	The previous game can be retried from the "Finished Game Menu"\\
 	\textbf{Trigger}			&	The "Retry" button in the "Finished Game Menu" is pressed\\
-	\textbf{Precondition}		&	A "Finished Game Menu" will be shown on completion of a map (Req \ref{init:finishedmenu_shown})\\\\
+	\textbf{Precondition}		&	A "Finished Game Menu" is shown on completion of a map (Req \ref{f-menus-finished_game-show})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	The previous game is re-initiated
@@ -719,12 +738,12 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{The next map is accessible from the "Finished Game Menu"}
+\subsubsection{The next map is accessible from the "Finished Game Menu"}
 \begin{tabularx}{\textwidth}{XX}
-	\textbf{ID}					&	\thesubsection\\
+	\textbf{ID}					&	\thesubsubsection\\
 	\textbf{Use case/Scenario}	&	The next map is accessible from the "Finished Game Menu"\\
 	\textbf{Trigger}			&	The "Next Map" button in the "Finished Game Menu" is pressed\\
-	\textbf{Precondition}		&	A "Finished Game Menu" will be shown on completion of a map (Req \ref{init:finishedmenu_shown})\\\\
+	\textbf{Precondition}		&	A "Finished Game Menu" is shown on completion of a map (Req \ref{f-menus-finished_game-show})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	A new game with the next map is initated
@@ -741,10 +760,12 @@
 \end{tabularx}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%% Non-functional %%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section*{Non-functional requirements}
+\addcontentsline{toc}{section}{Non-functional requirements}
 
 %%%%%%%%%%%%%%% Device %%%%%%%%%%%%%%%%%
 \section{Device}
@@ -769,7 +790,7 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{The device shall have an accelerometer} \label{accelerometer}
+\subsection{The device shall have an accelerometer} \label{nf-device-shall_have_accelerometer}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	The device shall have an accelerometer\\
@@ -813,8 +834,9 @@
 
 
 %%%%%%%%%%%%%%% Application %%%%%%%%%%%%%%%
+\newpage
 \section{Application}
-\subsection{The user shall be able to start the application} \label{init:nf_app_start}
+\subsection{The user shall be able to start the application} \label{nf-application-start}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	The user shall be able to start the application\\
@@ -836,7 +858,7 @@
 	\textbf{Authors}				&	Christoffer, Andreas \& Gustav
 \end{tabularx}
 
-\subsection{The user shall be able to exit the application} \label{init:nf_app_exit}
+\subsection{The user shall be able to exit the application} \label{nf-application-exit}
 \begin{tabularx}{\textwidth}{XX}
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	The user shall be able to exit the application\\
@@ -862,7 +884,7 @@
 	\textbf{ID}					&	\thesubsection\\
 	\textbf{Use case/Scenario}	&	The application shall have access to the devices accelerometer\\
 	\textbf{Trigger}			&	-\\
-	\textbf{Precondition}		&	The device shall have an accelerometer (Req \ref{accelerometer})\\\\
+	\textbf{Precondition}		&	The device shall have an accelerometer (Req \ref{nf-device-shall_have_accelerometer})\\\\
 	\multicolumn{2}{>{\setlength\hsize{2\hsize}}X}{
 	\textbf{Basic path} \newline
 	The application requires access to the accelerometer

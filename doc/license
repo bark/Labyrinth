@@ -1,8 +1,13 @@
 We have chosen to use the GNU GPLv3.
-Our game will probably be in a playable version when finishing this course, but
-not with too many fancy functions due to the time limit. Therefor, along with
-our intention of wanting to release it for free, we would like to give others
-the opptortunity to continue the development of our game. But, we still want it
-to be free and open as when we released it, so that we ourselves can learn from
-contributions by others and let the flow of releasing the source for free
-continue.
+
+Our game will probably be available in a playable version when this course is
+finished. However, it will most likely not contain too many "fancy" functions,
+as there is a clear time limitation. Therefore our intention is to
+release this application for free, along with the opportunity for others
+to continue the development of the application.
+
+Since our goal for this application is for it to be free, we want to enforce
+others to release it for free aswell. This will keep the "flow of free software"
+going, without anyone to claim it as their own or earning money off of other
+peoples work. There is also a personal gain from this, getting to know how our
+application can continue its development and learn from other peoples ideas.

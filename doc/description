@@ -1,0 +1,25 @@
+--Labyrinth--
+
+//The sales pitch:
+A modern take on the classic boardgame. Navigate the ball through
+the labyrinth, while avoiding the sink holes, using your android
+devices built in motion sensors.
+
+//The developers description:
+Navigate the ball through a predetermined map, making use of the
+motion sensors in the android device for steering. If the ball
+hits one of the "sink holes" the user has lost the game and can
+try again. If the ball makes its way through the entire labyrinth
+and hits the "final hole", the map is cleared and a time is set
+for this particular map. The user can then choose to retry the
+map, to try and get a better time, or go on to play a different
+map.
+
+The times for each map are sorted and the lowest times for every
+map is shown in a "highscore list". The user will be able to
+erase the highscore data, to start all over again with setting
+times.
+
+Sounds will play when the ball interacts with a different object,
+as in a wall, a sink hole or the final hole. Vibrations might also
+occur at these moments.

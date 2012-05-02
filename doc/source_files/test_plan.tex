@@ -1,0 +1,87 @@
+\documentclass[a4paper,titlepage]{article}
+\usepackage[final]{pdfpages}
+\usepackage{hyperref}
+
+
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black
+}
+
+
+\title{Test Plan}
+\author{Andreas Berggren\\
+        Gustav Freij\\
+        Christoffer Karlsson}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% Table of contents
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+
+% 
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+
+\section{Introduction}
+\subsection{Purpose of application}
+\subsection{General characteristics of application}
+
+\section{Test enviroment}
+%Vilka förberedelser behöver göras innan man kan testa
+%** Var finns koden eller .apk?
+%** Hur installeras denna?
+%** Behöver man tömma eller skapa en databas?
+%** Behövs internetuppkoppling (kanske ett spciellt nätverk)?
+
+\subsection{Hardware enviroment}
+%(what computers/devices was/wered used?)
+%Använder ni emulatorn eller riktig telefon vid dessa?
+
+\subsection{Software environment}
+%(what software (incl version) was used?)
+
+\subsubsection{Softwares}
+\subsubsection{Software settings}
+
+
+\section{System information}
+\subsection{System version}
+%(what version of your software is tested in this document)
+
+\section{Known bugs and limitations}
+%(list all bugs you knew of before the test)
+
+\section{Test specifcation}
+%(list the name and version of the test documentation (doc with test cases))
+
+\section{Automatic test}
+\subsection{Code coverage}
+%Använder ni kodtäckningsverktyg, vilken grad av kodtäckning siktar
+%ni på? – motivera
+
+\subsection{Nightly builds}
+%Om ni gör detta, beskriv hur, var, när detta görs
+
+\subsection{Unit test}
+%Vilka unit test-programvaror använder ni
+
+%Finns det saker som ni inte kan testa via unit tests – dokumentera
+%och motivera detta
+
+\section{Test report}
+%Vad testas?  Är det senaste versionen i GIT (inte bra!), eller en upptagged
+%release (bra!).
+
+%(present a table with Test id, Result, Comment)
+%(use comment to say what bug the test resulted in or that the test could not be performed since the requirement is not yet implemented)

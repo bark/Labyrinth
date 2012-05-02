@@ -1,0 +1,309 @@
+\documentclass[a4paper,titlepage]{article}
+\usepackage[final]{pdfpages}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{titlesec}
+
+
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black
+}
+
+\titlespacing*{\section}{0pt}{*4}{*3}
+\titlespacing*{\subsection}{0pt}{*8}{*3}
+
+
+\title{Test Cases}
+\author{Andreas Berggren\\
+        Gustav Freij\\
+        Christoffer Karlsson}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% Table of contents
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\renewcommand{\arraystretch}{1.5}
+
+% System
+\section{System}
+\subsection{Start application}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		The user starts the application.\\
+	\textbf{Precondition}	&
+		The application is installed.\\
+	\textbf{Test steps}	&
+		1. Locate the installed application \newline
+		2. Launch application \newline
+		3. Verify that the application has launched \\
+	\textbf{Related requirement}	&
+		Req 1.1 - The user starts the application \\
+\end{tabularx}
+
+\subsection{Exit application}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		The user exits the application.\\
+	\textbf{Precondition}	&
+		The application is running. \newline
+		The user is in the main menu.\\
+	\textbf{Test steps}	&
+		1.  Press the backwards button	\newline
+		2.  Verify that the application is terminated	\\
+	\textbf{Related requirement}	&
+		Req 1.2 - The user exits the application \\
+\end{tabularx}
+
+\subsection{Show main menu on startup}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Show main menu on startup.\\
+	\textbf{Precondition}	&
+		The application is started.\\
+	\textbf{Test steps}	&
+		1.  Wait for the application to load\newline
+		2.  Verify that the main menu is shown\\
+	\textbf{Related requirement}	&
+		Req 1.3 - Show main menu on startup\\
+\end{tabularx}
+
+% Initiation
+\newpage
+\section{Initiation}
+\subsection{Add a ball}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Adding a ball.\\
+	\textbf{Precondition}	&
+		A new game is started.\\
+	\textbf{Test steps}	&
+		1.  Verify that a ball is shown \\
+	\textbf{Related requirement}	&
+		Req 2.1 - Add a ball \\
+\end{tabularx}
+
+\subsection{Add virtual arrows}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Add virtual arrows.\\
+	\textbf{Precondition}	&
+		A new game is started.\newline
+		Debug mode is active.\\
+	\textbf{Test steps}	&
+		1.  Verify that the virtual arrows are shown\\
+	\textbf{Related requirement}	&
+		Req 2.2 - Add virtual arrows \\
+\end{tabularx}
+
+\subsection{Add a playing board}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Add a playing board.\\
+	\textbf{Precondition}	&
+		A new game is started.\\
+	\textbf{Test steps}	&
+		1.  Verify that the playing board is shown\\
+	\textbf{Related requirement}	&
+		Req 2.3 - Add a playing board \\
+\end{tabularx}
+
+\subsection{Add one wall}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Add one wall.\\
+	\textbf{Precondition}	&
+		A new game is started.\\
+	\textbf{Test steps}	&
+		1.  Verify that a wall is shown\\
+	\textbf{Related requirement}	&
+		Req 2.4 - Add one wall \\
+\end{tabularx}
+
+
+% Steering
+\newpage
+\section{Steering}
+\subsection{Steer the ball using virtual arrows}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Steer the ball using virtual arrows.\\
+	\textbf{Precondition}	&
+		The virtual arrows are added.\\
+	\textbf{Test steps}	&
+		1.  Press any of the virtual arrows\newline
+		2.  Verify that the ball is moved in that direction\\
+	\textbf{Related requirement}	&
+		Req 3.2 - Steer the ball using virtual arrows \\
+\end{tabularx}
+
+% Interaction
+\newpage
+\section{Interaction}
+\subsection{Interaction between tilt of device and ball}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Have ball interact with tilt of device.\\
+	\textbf{Precondition}	&
+		A ball is added.\\
+	\textbf{Test steps}	&
+		1. Tilt the device \newline
+		2. Verify that the ball is moved towards the tilted direction\\
+	\textbf{Related requirement}	&
+		Req 4.1 - Have ball interact with tilt of device \\
+\end{tabularx}
+
+\subsection{Interaction between the ball and a wall}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Have ball interact with wall.\\
+	\textbf{Precondition}	&
+		The ball is added.\newline
+		A wall is added.\\
+	\textbf{Test steps}	&
+		1. Move the ball to the position of a wall \newline
+		2. Verify that the ball does not pass through the wall \\
+	\textbf{Related requirement}	&
+		Req 4.2 - Have ball interact with wall \\
+\end{tabularx}
+
+\subsection{Interaction between the ball and a sink hole}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Have ball interact with a sink hole.\\
+	\textbf{Precondition}	&
+		A ball is added.\newline
+		A sink hole is added. \\
+	\textbf{Test steps}	&
+		1. Move the ball to the position of a sink hole \newline
+		2. Verify that the ball is swallowed by the sink hole \\
+	\textbf{Related requirement}	&
+		Req 4.3 - Have ball interact with a sink hole \\
+\end{tabularx}
+
+\subsection{Interaction between the ball and the final hole}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Have ball interact with the final hole.\\
+	\textbf{Precondition}	&
+		A ball is added.\newline
+		A final hole is added.\\
+	\textbf{Test steps}	&
+		1. Move the ball to the position of the final hole\newline
+		2. Verify that the ball is swallowed by the final hole \\
+	\textbf{Related requirement}	&
+		Req 4.4 - Have ball interact with the final hole \\
+\end{tabularx}
+
+\subsection{No sleep mode while active game}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		The device will not enter sleep mode while in an active game.\\
+	\textbf{Precondition}	&
+		-\\
+	\textbf{Test steps}	&
+		1. Start a new game\newline
+		2. Remain idle while the new game is running for as long a time
+		   as the device needs to enter sleep mode \newline
+		3. Verify that the device does not enter sleep mode \\
+	\textbf{Related requirement}	&
+		Req 4.5 - No sleep mode while active game \\
+\end{tabularx}
+
+\subsection{Landscape view while in active game}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		The application will only make use of landscape view while in
+		playing mode.\\
+	\textbf{Precondition}	&
+		-\\
+	\textbf{Test steps}	&
+		1. Start a new game \newline
+		2. Tilt the device to vertical position \newline
+		3. Verify that the application is running in landscape mode \\
+	\textbf{Related requirement}	&
+		Req 4.6 - Landscape view while in active game \\
+\end{tabularx}
+
+% Activities
+\newpage
+\section{Activities}
+\subsection{Show main menu}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Show main menu.\\
+	\textbf{Precondition}	&
+		The application is running.\\
+	\textbf{Test steps}	&
+		1. Go to the main menu \newline
+		2. Verify that the main menu is shown \\
+	\textbf{Related requirement}	&
+		Req 5.1 - Main menu \\
+\end{tabularx}
+
+\subsection{Start new game from main menu}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Start new game from main menu.\\
+	\textbf{Precondition}	&
+		The main menu is shown.\\
+	\textbf{Test steps}	&
+		1.  Press the "New Game" button\newline
+		2.  Verify that a new game is started\\
+	\textbf{Related requirement}	&
+		Req 5.1.1 - New game \\
+\end{tabularx}
+
+\subsection{Go to highscores from main menu}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Go to highscores from main menu.\\
+	\textbf{Precondition}	&
+		The main menu is shown.\\
+	\textbf{Test steps}	&
+		1. Press the "Highscore" button\newline
+		2. Verify that the highscores are shown\\
+	\textbf{Related requirement}	&
+		Req 5.1.2 - Highscore \\
+\end{tabularx}
+
+\subsection{Go to settings menu from main menu}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Go to settings menu from main menu.\\
+	\textbf{Precondition}	&
+		The main menu is shown.\\
+	\textbf{Test steps}	&
+		1.  Press the "Settings" button\newline
+		2.  Verify that the settings menu are shown\\
+	\textbf{Related requirement}	&
+		Req 5.1.3 - Settings \\
+\end{tabularx}
+
+\subsection{Exit the application from main menu}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Exit the application from the main menu.\\
+	\textbf{Precondition}	&
+		The main menu is shown.\\
+	\textbf{Test steps}	&
+		1.  Press the "Exit" button\newline
+		2.  Verify that the application is terminated\\
+	\textbf{Related requirement}	&
+		Req 5.1.4 - Exit \\
+\end{tabularx}
+
+\end{document}

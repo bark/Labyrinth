@@ -62,8 +62,8 @@
 		The application is running. \newline
 		The user is in the main menu.\\
 	\textbf{Test steps}	&
-		1.  Press the backwards button	\newline
-		2.  Verify that the application is terminated	\\
+		1. Press the backwards button	\newline
+		2. Verify that the application is terminated	\\
 	\textbf{Related requirement}	&
 		Req 1.2 - The user exits the application \\
 \end{tabularx}
@@ -75,8 +75,8 @@
 	\textbf{Precondition}	&
 		The application is started.\\
 	\textbf{Test steps}	&
-		1.  Wait for the application to load\newline
-		2.  Verify that the main menu is shown\\
+		1. Wait for the application to load\newline
+		2. Verify that the main menu is shown\\
 	\textbf{Related requirement}	&
 		Req 1.3 - Show main menu on startup\\
 \end{tabularx}
@@ -91,7 +91,7 @@
 	\textbf{Precondition}	&
 		A new game is started.\\
 	\textbf{Test steps}	&
-		1.  Verify that a ball is shown \\
+		1. Verify that a ball is shown \\
 	\textbf{Related requirement}	&
 		Req 2.1 - Add a ball \\
 \end{tabularx}
@@ -104,7 +104,7 @@
 		A new game is started.\newline
 		Debug mode is active.\\
 	\textbf{Test steps}	&
-		1.  Verify that the virtual arrows are shown\\
+		1. Verify that the virtual arrows are shown\\
 	\textbf{Related requirement}	&
 		Req 2.2 - Add virtual arrows \\
 \end{tabularx}
@@ -116,7 +116,7 @@
 	\textbf{Precondition}	&
 		A new game is started.\\
 	\textbf{Test steps}	&
-		1.  Verify that the playing board is shown\\
+		1. Verify that the playing board is shown\\
 	\textbf{Related requirement}	&
 		Req 2.3 - Add a playing board \\
 \end{tabularx}
@@ -128,9 +128,45 @@
 	\textbf{Precondition}	&
 		A new game is started.\\
 	\textbf{Test steps}	&
-		1.  Verify that a wall is shown\\
+		1. Verify that a wall is shown\\
 	\textbf{Related requirement}	&
 		Req 2.4 - Add one wall \\
+\end{tabularx}
+
+\subsection{Add walls shaped like a maze}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Add walls shaped like a maze.\\
+	\textbf{Precondition}	&
+		A playing board is added.\\
+	\textbf{Test steps}	&
+		1. Verify that there are several walls present, shaped like a maze\\
+	\textbf{Related requirement}	&
+		Req 2.5 - Add walls shaped like a maze\\
+\end{tabularx}
+
+\subsection{Add sink holes}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Add sink holes.\\
+	\textbf{Precondition}	&
+		A playing board is added.\\
+	\textbf{Test steps}	&
+		1. Verify that there are sink holes on the board\\
+	\textbf{Related requirement}	&
+		Req 2.6 - Add sink holes\\
+\end{tabularx}
+
+\subsection{Add a final hole}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Add a final hole.\\
+	\textbf{Precondition}	&
+		A playing board is added.\\
+	\textbf{Test steps}	&
+		1. Verify that there are a final hole on the board\\
+	\textbf{Related requirement}	&
+		Req 2.7 - Add a final hole\\
 \end{tabularx}
 
 
@@ -144,10 +180,23 @@
 	\textbf{Precondition}	&
 		The virtual arrows are added.\\
 	\textbf{Test steps}	&
-		1.  Press any of the virtual arrows\newline
-		2.  Verify that the ball is moved in that direction\\
+		1. Press any of the virtual arrows\newline
+		2. Verify that the ball is moved in that direction\\
 	\textbf{Related requirement}	&
 		Req 3.2 - Steer the ball using virtual arrows \\
+\end{tabularx}
+
+\subsection{}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Steer the ball using the accelerometer\\
+	\textbf{Precondition}	&
+		A ball is added\\
+	\textbf{Test steps}	&
+		1. Tilt the device\newline
+		2. Verify that the ball is moving in the direction of the tilt\\
+	\textbf{Related requirement}	&
+		Req 3.3 - Steer the ball using accelerometer\\
 \end{tabularx}
 
 % Interaction
@@ -158,10 +207,10 @@
 	\textbf{Description}	&
 		Have ball interact with tilt of device.\\
 	\textbf{Precondition}	&
-		A ball is added.\\
+		The ball can be steered using the accelerometer\\
 	\textbf{Test steps}	&
 		1. Tilt the device \newline
-		2. Verify that the ball is moved towards the tilted direction\\
+		2. Verify that the ball is moving faster with more tilt of the device\\
 	\textbf{Related requirement}	&
 		Req 4.1 - Have ball interact with tilt of device \\
 \end{tabularx}
@@ -261,8 +310,8 @@
 	\textbf{Precondition}	&
 		The main menu is shown.\\
 	\textbf{Test steps}	&
-		1.  Press the "New Game" button\newline
-		2.  Verify that a new game is started\\
+		1. Press the "New Game" button\newline
+		2. Verify that a new game is started\\
 	\textbf{Related requirement}	&
 		Req 5.1.1 - New game \\
 \end{tabularx}
@@ -287,8 +336,8 @@
 	\textbf{Precondition}	&
 		The main menu is shown.\\
 	\textbf{Test steps}	&
-		1.  Press the "Settings" button\newline
-		2.  Verify that the settings menu are shown\\
+		1. Press the "Settings" button\newline
+		2. Verify that the settings menu are shown\\
 	\textbf{Related requirement}	&
 		Req 5.1.3 - Settings \\
 \end{tabularx}
@@ -300,8 +349,21 @@
 	\textbf{Precondition}	&
 		The main menu is shown.\\
 	\textbf{Test steps}	&
-		1.  Press the "Exit" button\newline
-		2.  Verify that the application is terminated\\
+		1. Press the "Exit" button\newline
+		2. Verify that the application is terminated\\
+	\textbf{Related requirement}	&
+		Req 5.1.4 - Exit \\
+\end{tabularx}
+
+\subsection{Exit the application from main menu}
+\begin{tabularx}{\textwidth}{lX}
+	\textbf{Description}	&
+		Exit the application from the main menu.\\
+	\textbf{Precondition}	&
+		The main menu is shown.\\
+	\textbf{Test steps}	&
+		1. Press the "Exit" button\newline
+		2. Verify that the application is terminated\\
 	\textbf{Related requirement}	&
 		Req 5.1.4 - Exit \\
 \end{tabularx}

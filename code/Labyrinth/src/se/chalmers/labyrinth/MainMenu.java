@@ -19,13 +19,13 @@ public class MainMenu extends Activity implements OnClickListener {
         btnNewGame.setOnClickListener(this);
     }
     
-	public void onClick(View v) {
-		switch(v.getId()) {
-			// "New Game"-knappen
-			case R.id.btnNewGame:
-				Intent intent = new Intent(MainMenu.this, Game.class);
-				startActivity(intent);
-			break;
-		}
-	}
+    public void onClick(View v) {
+        switch(v.getId()) {
+            // "New Game"-knappen
+            case R.id.btnNewGame:
+                Intent intent = new Intent(MainMenu.this, Game.class);
+                startActivity(intent);
+            break;
+        }
+    }
 }

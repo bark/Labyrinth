@@ -40,7 +40,9 @@ public class Game extends Activity {
     
     class GameView extends View implements SensorEventListener {
         private Ball ball;
+        private Hole finalHole;
         private ArrayList<Wall> walls;
+        private ArrayList<Hole> sinkHoles;
         private float sensorX;
         private float sensorY;
         
@@ -49,10 +51,13 @@ public class Game extends Activity {
             super(context);
             accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
             
-            // Initiera bollen och alla väggar
+            // Initiera bollen, alla väggar samt finalHole
             ball = new Ball(60f, 60f, 20f, Color.RED);
             walls = new ArrayList<Wall>();
+            finalHole = new Hole(30f, Color.BLUE,300f,600f);
+            sinkHoles = new ArrayList<Hole>();
             initiateBoard();
+            
             
             sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI);
         }
@@ -69,6 +74,10 @@ public class Game extends Activity {
             walls.add(new Wall(0f, 0, 480f, 20, wallColor));
             walls.add(new Wall(460f, 0f, 480f, 800f, wallColor));
             walls.add(new Wall(0f, 0f, 20f, 800f, wallColor));
+            
+            //Alla sjunkhål
+            sinkHoles.add(new Hole(30f,Color.BLACK,300f,150f));
+            sinkHoles.add(new Hole(30f,Color.BLACK,150f,150f));
         }
        
         
@@ -113,7 +122,8 @@ public class Game extends Activity {
         }
         
         private void checkCollisions(float sensX, float sensY) {
-            float ballPosX = ball.getPosX();
+            
+        	float ballPosX = ball.getPosX();
             float ballPosY = ball.getPosY();
             float ballRadius = ball.getRadius();
             
@@ -124,6 +134,43 @@ public class Game extends Activity {
             
             float updPosX = sensX;
             float updPosY = sensY;
+            
+            //Beräkna för varje hål dess position samt om bollen ramlar ned
+            for(Hole hole : sinkHoles){
+            	float holePosX = hole.getPosX();
+                float holePosY = hole.getPosY();
+                float holeRadius = hole.getRadius();
+                
+                float holeOffsetTop = holePosX + holeRadius;
+                float holeOffsetDown = holePosX - holeRadius;
+                float holeOffsetLeft = holePosY - holeRadius;
+                float holeOffsetRight = holePosY + holeRadius;
+ 
+                //Kollar ifall bollen ramlar ned i sjunkhålet genom att matcha
+                //bollens koordinater med hålens offset.
+                //Om bollen är till hälften i hålet eller mer räknas den som inne.
+                if (ballPosY <= holeOffsetRight && ballPosY >= holeOffsetLeft) {
+                	if (ballPosX <= holeOffsetTop && ballPosX >= holeOffsetDown) {
+                		//Om bollen ramlar ned; flytta bollen
+                		ball.setPosX(400);
+                		ball.setPosY(400);
+                	}
+                }
+            }
+            //Räkna ut offset för finalHole
+            float finalHoleOffsetTop = finalHole.getPosX() + finalHole.getRadius();
+            float finalHoleOffsetDown = finalHole.getPosX() - finalHole.getRadius();
+            float finalHoleOffsetLeft = finalHole.getPosY() - finalHole.getRadius();
+            float finalHoleOffsetRight = finalHole.getPosY() + finalHole.getRadius();
+            
+            //Kollar ifall bollen ramlar ned i finalHole
+            if (ballPosY <= finalHoleOffsetRight && ballPosY >= finalHoleOffsetLeft) {
+            	if (ballPosX <= finalHoleOffsetTop && ballPosX >= finalHoleOffsetDown) {
+            		//Om bollen ramlar ned; flytta bollen
+            		ball.setPosX(400);
+            		ball.setPosY(400);
+            	}
+            }
             
             // Kolla kollisioner mot alla väggar
             for (Wall wall : walls) {
@@ -177,6 +224,8 @@ public class Game extends Activity {
                     }
                 }
             }
+            
+            
 
             ball.updatePosition(updPosX, updPosY);
         }
@@ -200,6 +249,19 @@ public class Game extends Activity {
                 paint.setColor(wall.getColor());
                 canvas.drawRect(wall.getPosX1(), wall.getPosY1(), wall.getPosX2(), wall.getPosY2(), paint);
             }
+            
+            //Rita upp hålen
+            for(Hole hole : sinkHoles){
+            	paint.setColor(hole.getColor());
+            	paint.setAntiAlias(true);
+            	canvas.drawCircle(hole.getPosX(), hole.getPosY(), hole.getRadius(), paint);
+            	
+            }
+            
+            //Rita ut finalHole
+            paint.setColor(finalHole.getColor());
+            paint.setAntiAlias(true);
+            canvas.drawCircle(finalHole.getPosX(), finalHole.getPosY(), finalHole.getRadius(), paint);
             
             // Hämta värdena för bollen
             final float posX = ball.getPosX();

@@ -1,0 +1,141 @@
+\documentclass[a4paper,titlepage]{article}
+\usepackage[final]{pdfpages}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{inconsolata}
+\usepackage{url}
+\usepackage{color}
+\usepackage{setspace}
+
+
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black
+}
+
+
+\title{Test Report\\v0.2 Beta}
+\author{Andreas Berggren\\
+        Gustav Freij\\
+        Christoffer Karlsson}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% Table of contents
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+
+% 
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+
+\section{Introduction}
+\subsection{Purpose of application}
+Have a ball move using the accelerometer and interact with generated walls.
+
+\subsection{General characteristics of application}
+Using the accelerometer the ball will be guided over the playing field.
+
+\newpage
+\section{Test enviroment}
+%Vilka förberedelser behöver göras innan man kan testa
+%** Var finns koden eller .apk?
+%** Hur installeras denna?
+%** Behöver man tömma eller skapa en databas?
+%** Behövs internetuppkoppling (kanske ett spciellt nätverk)?
+The compiled application, .apk, can be downloaded from \url{https://github.com/ChristofferKarlsson/Labyrinth/downloads}. The downloadable application is
+compiled from the source code on GIT with the tag \texttt{v0.2\_beta}.
+%No other preparations are required before installing and using the application.
+
+\subsection{Hardware enviroment}
+%(what computers/devices was/wered used?)
+%Använder ni emulatorn eller riktig telefon vid dessa?
+The devices used to test the application are the Samsung Galaxy S and Samsung
+Galaxy S2.
+
+\subsection{Software environment}
+%(what software (incl version) was used?)
+\subsubsection{Softwares}
+The software environments used to test the application are Android 2.3.3 and
+Android 4.0.3.
+\subsubsection{Software settings}
+No specific settings are needed.
+
+\newpage
+\section{System information}
+\subsection{System version}
+%(what version of your software is tested in this document)
+Version 0.2 Beta.
+
+\newpage
+\section{Known bugs and limitations}
+%(list all bugs you knew of before the test)
+\subsubsection{Bugs}
+\begin{itemize}
+  \item The ball is thought upon as a rectangle, meaning it only has four reference points, and therefore all of its edges are not immediately discovered by the collision handler.
+  \item Sometimes the ball is stopped slightly within a wall which causes the graphics to look out of place.
+\end{itemize}
+
+\subsubsection{Limitations}
+No limitations.
+
+\newpage
+\section{Test specifcation}
+%(list the name and version of the test documentation (doc with test cases))
+The test cases can be found in the document \texttt{test\_cases.pdf}.
+
+\newpage
+\section{Automatic test}
+\subsection{Code coverage}
+%Använder ni kodtäckningsverktyg, vilken grad av kodtäckning siktar
+%ni på? – motivera
+No code coverage is used.
+\subsection{Nightly builds}
+%Om ni gör detta, beskriv hur, var, när detta görs
+No nightly builds are being done, yet.
+\subsection{Unit test}
+%Vilka unit test-programvaror använder ni
+
+%Finns det saker som ni inte kan testa via unit tests – dokumentera
+%och motivera detta
+No unit tests have been developed, yet.
+
+\newpage
+\section{Test report}
+%Vad testas?  Är det senaste versionen i GIT (inte bra!), eller en upptagged
+%release (bra!).
+The test is done on the GIT version tagged as \texttt{v0.2\_beta}.\\
+%(present a table with Test id, Result, Comment)
+%(use comment to say what bug the test resulted in or that the test could not be performed since the requirement is not yet implemented)
+
+\begin{tabularx}{\textwidth}{XXX}
+	Test id & Result    & Comment\\
+\hline\\
+	1.1     & Passed      & -\\
+	1.2     & Passed      & -\\
+	1.3     & Passed      & -\newline\\
+	2.1     & Passed      & -\\
+	2.2     & -           & Not implemented\\
+	2.3     & Passed      & -\\
+	2.4     & Passed      & -\\
+	2.5     & Passed      & Shaped like an 'L'\newline\\
+	3.1     & -           & Not implemented\\
+	3.2     & Passed      & -\newline\\
+	4.1     & Passed      & -\\
+	4.2     & Passed      & -\\
+	4.5     & Not passed  & Not yet implemented\\
+	4.6     & Passed      & -\newline\\
+	5.1     & Passed      & -\\
+	5.2     & Passed      & -\\
+	5.5     & Passed      & -\\
+\end{tabularx}
+\end{document}

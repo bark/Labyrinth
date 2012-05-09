@@ -12,17 +12,30 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
+import android.util.Log;
 import android.view.Display;
 import android.view.Surface;
 import android.view.View;
 import android.view.WindowManager;
+/*
+ * Vissa delar av den här koden är tagna från Android developers:
+ * http://developer.android.com/resources/samples/AccelerometerPlay/
+ * src/com/example/android/accelerometerplay/AccelerometerPlayActivity.html
+ * 
+ * Dessa är markerade med en kommentar innan.
+ * 
+ */
 
 public class Game extends Activity {
-
+	private GameView gameView;
     private SensorManager sensorManager;
     private WindowManager windowManager;
     private Display display;
     private Sensor accelerometer;
+    private PowerManager powerManager;
+    private WakeLock wakeLock;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,8 +46,46 @@ public class Game extends Activity {
         windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         display = windowManager.getDefaultDisplay();
         
-        GameView gv = new GameView(this);
-        setContentView(gv);
+        // För att hålla skärmen igång konstant (Tagen från Android developers)
+        powerManager = (PowerManager) getSystemService(POWER_SERVICE);
+        wakeLock = powerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, getClass().getName());
+        
+        
+        gameView = new GameView(this);
+        setContentView(gameView);
+    }
+    
+    
+    // Den här funktionen är tagen från Android developers
+    // och modifierad för att fungera med våran applikation.
+    @Override
+    protected void onResume() {
+    	super.onResume();
+        /*
+         * when the activity is resumed, we acquire a wake-lock so that the
+         * screen stays on, since the user will likely not be fiddling with the
+         * screen or buttons.
+         */
+    	wakeLock.acquire();
+    	// Start the simulation
+    	gameView.startGame();
+    }
+    
+    // Den här funktionen är tagen från Android developers
+    // och modifierad för att fungera med våran applikation.
+    @Override
+    protected void onPause() {
+    	super.onPause();
+        /*
+         * When the activity is paused, we make sure to stop the simulation,
+         * release our sensor resources and wake locks
+         */
+
+        // Stop the simulation
+    	gameView.stopGame();
+    	
+    	// and release our wake-lock
+    	wakeLock.release();
     }
     
     
@@ -53,8 +104,18 @@ public class Game extends Activity {
             ball = new Ball(60f, 60f, 20f, Color.RED);
             walls = new ArrayList<Wall>();
             initiateBoard();
-            
-            sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI);
+        }
+        
+        // Den här funktionen är tagen från Android developers
+        // och modifierad för att fungera med våran applikation.
+        public void startGame() {
+        	sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI);
+        }
+        
+        //Den här funktionen är rakt tagen från Android developers.
+        public void stopGame() {
+        	sensorManager.unregisterListener(this);
+        	Log.d("SENSOR_MANAGER", "Sensor shall now be turned off");	// Vår kod, till för debugging.
         }
         
         private void initiateBoard() {
@@ -72,10 +133,7 @@ public class Game extends Activity {
         }
        
         
-        /*
-         * Den här funktionen är rakt tagen från Android developers:
-         * http://developer.android.com/resources/samples/AccelerometerPlay/src/com/example/android/accelerometerplay/AccelerometerPlayActivity.html
-         */
+        //Den här funktionen är rakt tagen från Android developers.
         public void onSensorChanged(SensorEvent event) {
             if (event.sensor.getType() != Sensor.TYPE_ACCELEROMETER)
                 return;

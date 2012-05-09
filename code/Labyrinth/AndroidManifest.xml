@@ -1,24 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="se.chalmers.labyrinth"
-    android:versionCode="1"
-    android:versionName="0.2 Beta" >
-
-    <uses-sdk android:minSdkVersion="7" />
-
-    <application
-        android:label="@string/app_name" android:debuggable="false">
-        <activity
-            android:name=".MainMenu"
-            android:label="@string/app_name" >
+    android:versionCode="2"
+    android:versionName="0.21 Beta" ><application android:label="@string/app_name" android:debuggable="false">
+        <activity android:name=".MainMenu" android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Game"
-            android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+        <activity android:name=".Game" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
     </application>
-
+    <uses-sdk android:minSdkVersion="7" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 </manifest>

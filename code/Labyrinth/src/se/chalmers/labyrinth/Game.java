@@ -3,7 +3,10 @@ package se.chalmers.labyrinth;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -16,6 +19,9 @@ import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.util.Log;
 import android.view.Display;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.Surface;
 import android.view.View;
 import android.view.WindowManager;
@@ -36,6 +42,7 @@ public class Game extends Activity {
     private Sensor accelerometer;
     private PowerManager powerManager;
     private WakeLock wakeLock;
+    private boolean shallDraw;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -96,18 +103,15 @@ public class Game extends Activity {
         private ArrayList<Hole> sinkHoles;
         private float sensorX;
         private float sensorY;
+
         
         
         public GameView(Context context) {
             super(context);
             accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
             
-            // Initiera bollen, alla väggar samt finalHole
-            ball = new Ball(60f, 60f, 20f, Color.RED);
-            walls = new ArrayList<Wall>();
-            finalHole = new Hole(30f, Color.BLUE,300f,600f);
-            sinkHoles = new ArrayList<Hole>();
-            initiateBoard();
+            // Skapa ett nytt spel
+            newGame();
         }
         
         // Den här funktionen är tagen från Android developers
@@ -120,6 +124,20 @@ public class Game extends Activity {
         public void stopGame() {
         	sensorManager.unregisterListener(this);
         	Log.d("SENSOR_MANAGER", "Sensor shall now be turned off");	// Vår kod, till för debugging.
+        }
+        
+        // Skapar ett nytt spel, har den i en egen funktion för att
+        // möjliggöra "Retry"-knappen.
+        private void newGame() {
+            // Initiera bollen, alla väggar samt finalHole
+            ball = new Ball(60f, 60f, 20f, Color.RED);
+            walls = new ArrayList<Wall>();
+            finalHole = new Hole(30f, Color.BLUE,300f,600f);
+            sinkHoles = new ArrayList<Hole>();
+            
+            shallDraw = true;
+            
+            initiateBoard();
         }
         
         private void initiateBoard() {
@@ -174,8 +192,28 @@ public class Game extends Activity {
             }
         }
         
-        public void onAccuracyChanged(Sensor arg0, int arg1) {
-            // TODO Auto-generated method stub
+        private void showFinalMenu() {
+        	shallDraw = false;
+        	
+        	// Bygg upp slutmenyn som en dialog
+        	AlertDialog.Builder dialog = new AlertDialog.Builder(Game.this);
+        	dialog.setTitle("Game finished!");
+        	dialog.setMessage("Congratulations!\nYou did it!");
+        	dialog.setNeutralButton("Retry", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					// Initiera ett nytt spel
+					newGame();
+				}
+			});
+        	dialog.setNegativeButton("Main Menu", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					// Gå till "Main Menu" och avsluta spelet
+					Intent mainMenu = new Intent(Game.this, MainMenu.class);
+					startActivity(mainMenu);
+					finish();
+				}
+			});
+        	dialog.show();
         }
         
         private void checkCollisions(float sensX, float sensY) {
@@ -223,9 +261,10 @@ public class Game extends Activity {
             //Kollar ifall bollen ramlar ned i finalHole
             if (ballPosY <= finalHoleOffsetRight && ballPosY >= finalHoleOffsetLeft) {
             	if (ballPosX <= finalHoleOffsetTop && ballPosX >= finalHoleOffsetDown) {
+            		showFinalMenu();
             		//Om bollen ramlar ned; flytta bollen
-            		ball.setPosX(400);
-            		ball.setPosY(400);
+            		//ball.setPosX(400);
+            		//ball.setPosY(400);
             	}
             }
             
@@ -282,57 +321,88 @@ public class Game extends Activity {
                 }
             }
             
-            
-
             ball.updatePosition(updPosX, updPosY);
         }
         
+
+        
         @Override
         protected void onDraw(Canvas canvas) {
-            final float sensX = sensorX;
-            final float sensY = sensorY;
-            Paint paint = new Paint();
-            
-            // Kolla kollisioner
-            checkCollisions(sensX, sensY);
-            
-            // Sätt bakgrunden
-            paint.setStyle(Paint.Style.FILL);
-            paint.setColor(Color.DKGRAY);
-            canvas.drawPaint(paint);
-            
-            // Rita upp alla väggar
-            for(Wall wall : walls) {
-                paint.setColor(wall.getColor());
-                canvas.drawRect(wall.getPosX1(), wall.getPosY1(), wall.getPosX2(), wall.getPosY2(), paint);
-            }
-            
-            //Rita upp hålen
-            for(Hole hole : sinkHoles){
-            	paint.setColor(hole.getColor());
-            	paint.setAntiAlias(true);
-            	canvas.drawCircle(hole.getPosX(), hole.getPosY(), hole.getRadius(), paint);
-            	
-            }
-            
-            //Rita ut finalHole
-            paint.setColor(finalHole.getColor());
-            paint.setAntiAlias(true);
-            canvas.drawCircle(finalHole.getPosX(), finalHole.getPosY(), finalHole.getRadius(), paint);
-            
-            // Hämta värdena för bollen
-            final float posX = ball.getPosX();
-            final float posY = ball.getPosY();
-            final float radius = ball.getRadius();
-            final int color = ball.getColor();
-            
-            // Rita upp bollen
-            paint.setColor(color);
-            paint.setAntiAlias(true);
-            canvas.drawCircle(posX, posY, radius, paint);
-        
-            // Rita om allt igen
-            invalidate();
+        	if (shallDraw) {
+	            final float sensX = sensorX;
+	            final float sensY = sensorY;
+	            Paint paint = new Paint();
+	            
+	            // Kolla kollisioner
+	            checkCollisions(sensX, sensY);
+	            
+	            // Sätt bakgrunden
+	            paint.setStyle(Paint.Style.FILL);
+	            paint.setColor(Color.DKGRAY);
+	            canvas.drawPaint(paint);
+	            
+	            // Rita upp alla väggar
+	            for(Wall wall : walls) {
+	                paint.setColor(wall.getColor());
+	                canvas.drawRect(wall.getPosX1(), wall.getPosY1(), wall.getPosX2(), wall.getPosY2(), paint);
+	            }
+	            
+	            //Rita upp hålen
+	            for(Hole hole : sinkHoles){
+	            	paint.setColor(hole.getColor());
+	            	paint.setAntiAlias(true);
+	            	canvas.drawCircle(hole.getPosX(), hole.getPosY(), hole.getRadius(), paint);
+	            }
+	            
+	            //Rita ut finalHole
+	            paint.setColor(finalHole.getColor());
+	            paint.setAntiAlias(true);
+	            canvas.drawCircle(finalHole.getPosX(), finalHole.getPosY(), finalHole.getRadius(), paint);
+	            
+	            // Hämta värdena för bollen
+	            final float posX = ball.getPosX();
+	            final float posY = ball.getPosY();
+	            final float radius = ball.getRadius();
+	            final int color = ball.getColor();
+	            
+	            // Rita upp bollen
+	            paint.setColor(color);
+	            paint.setAntiAlias(true);
+	            canvas.drawCircle(posX, posY, radius, paint);
+        	}
+        	
+	        // Rita om allt igen
+	        invalidate();
+        	
         }
+        
+        public void onAccuracyChanged(Sensor arg0, int arg1) {}
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+    	// Pausa uppritningen av spelet
+    	shallDraw = false;
+    	MenuInflater menuInflater = getMenuInflater();
+    	menuInflater.inflate(R.menu.ingamemenu, menu);
+    	return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	switch (item.getItemId()) {
+    		case R.id.inGameMenuResume:
+    			// Återuppta uppritningen av spelet igen
+    			shallDraw = true;
+    		break;
+    		case R.id.inGameMenuExit:
+    			// Gå till main menu
+    			Intent mainMenu = new Intent(Game.this, MainMenu.class);
+    			startActivity(mainMenu);
+    			finish();
+    		break;
+    	}
+    	
+    	return super.onOptionsItemSelected(item);
     }
 }
